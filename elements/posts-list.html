@@ -1,0 +1,29 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/mark-down/mark-down.html">
+
+<polymer-element name="posts-list"
+  attributes="firebaseRef"
+>
+  <template>
+    <template repeat="{{post in posts}}">
+      <mark-down>
+        <div>{{post.title}}</div>
+      </mark-down>
+    </template>
+  </template>
+
+
+  <script>
+    Polymer({
+      ready: function() {
+        var self = this;
+        this.firebaseRef.child('posts')
+        .orderByKey()
+        .on('value', function(data) {
+          self.posts = data.val().slice(1);
+        }); 
+      }
+    });
+  </script>
+
+</polymer-element>
