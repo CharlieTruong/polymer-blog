@@ -1,0 +1,28 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="firebase-address.html">
+<link rel="import" href="firebase-login.html">
+<link rel="import" href="posts-list.html">
+
+<polymer-element name="my-blog">
+
+  <template>
+    <firebase-login
+      provider="google"
+      firebaseAddress="{{address}}"
+      firebaseRef="{{firebaseRef}}"
+    >
+    </firebase-login>
+    <posts-list
+      firebaseRef="{{firebaseRef}}"
+    ></posts-list>
+  </template>
+
+
+  <script>
+    Polymer(Polymer.mixin({
+      ready: function() {
+      }
+    }, server));
+  </script>
+
+</polymer-element>
