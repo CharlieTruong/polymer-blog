@@ -2,10 +2,12 @@
 <link rel="import" href="firebase-address.html">
 <link rel="import" href="firebase-login.html">
 <link rel="import" href="posts-list.html">
+<link rel="import" href="../bower_components/pushstate-anchor/pushstate-anchor.html">
 
 <polymer-element name="my-blog">
 
   <template>
+    <a is="pushstate-anchor" href="/admin">Go To Admin</a>
     <firebase-login
       provider="google"
       firebaseAddress="{{address}}"
