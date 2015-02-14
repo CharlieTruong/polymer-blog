@@ -3,13 +3,14 @@
 <head>
   <title>Charlie's Blog</title>
   <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+  <link rel="import" href="bower_components/app-router/app-router.html">
   <link rel="import" href="elements/my-blog.html">
-  <link rel="import" href="/bower_components/app-router/app-router.html">
+  <link rel="import" href="elements/firebase-login.html">
 </head>
 <body>
   <app-router>
-    <app-route path="/" import="/elements/my-blog.html"></app-route>
-    <app-route path="/admin" import="/elements/firebase-login.html"></app-route>
+    <app-route path="/" element="my-blog"></app-route>
+    <app-route path="/admin" element="firebase-login"></app-route>
   </app-router>
 </body>
 </html>
