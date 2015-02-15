@@ -2,16 +2,14 @@
 <script src="../bower_components/firebase/firebase.js"></script>
 
 <polymer-element name="firebase-login"
-  attributes="provider firebaseAddress firebaseRef"
+  attributes="provider firebaseAddress firebaseRef router"
 >
 
   <template>
     <div 
       id="login-link"
       on-click="{{goToLogin}}"
-    >
-      Login with Google
-    </div>
+    >Login with Google</div>
 
     <style>
       #login-link {
@@ -23,11 +21,13 @@
 
   <script>
     Polymer({
-      ready: function() {
-        this.firebaseRef = new Firebase(this.firebaseAddress);
-
+      attached: function() {
+        var self = this;
         this.firebaseRef.onAuth(function(authData) { 
         });
+      },
+      ready: function() {
+        this.firebaseRef = new Firebase(this.firebaseAddress);
       },
       goToLogin: function() {
         this.firebaseRef.authWithOAuthRedirect(this.provider, function(error) {
