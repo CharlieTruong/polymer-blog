@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var connect = require('gulp-connect');
 var vulcanize = require('gulp-vulcanize');
+var historyApiFallback = require('connect-history-api-fallback');
 
 var build = function() {
   var DEST_DIR = 'dist';
@@ -17,7 +18,10 @@ var build = function() {
 gulp.task('connect', function() {
   connect.server({
     root: 'dist',
-    livereload: true
+    livereload: true,
+    middleware: function(connect, opt) {
+      return [historyApiFallback];
+    }
   });
 });
 
