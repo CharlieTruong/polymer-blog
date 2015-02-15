@@ -1,0 +1,32 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tab.html">
+
+<polymer-element name="blog-layout">
+
+  <template>
+    <paper-tabs selected="0" link>
+      <paper-tab>
+        <a
+          href="#/"
+          horizontal center-center layout>Posts
+        </a>
+      </paper-tab>
+      <paper-tab>
+        <a
+          href="#/admin"
+          horizontal center-center layout>About Me
+        </a>
+      </paper-tab>
+    </paper-tabs>
+    <content></content>
+  </template>
+
+  <script>
+    Polymer({
+      ready: function() {
+      }
+    });
+  </script>
+
+</polymer-element>

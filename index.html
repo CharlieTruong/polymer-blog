@@ -6,11 +6,15 @@
   <link rel="import" href="bower_components/app-router/app-router.html">
   <link rel="import" href="elements/my-blog.html">
   <link rel="import" href="elements/firebase-login.html">
+  <link rel="import" href="elements/blog-layout.html">
 </head>
 <body>
-  <app-router>
-    <app-route path="/" element="my-blog"></app-route>
-    <app-route path="/admin" element="firebase-login"></app-route>
-  </app-router>
+  <blog-layout>
+    <app-router mode="hash">
+      <app-route path="/" element="my-blog" bindRouter></app-route>
+      <app-route path="/admin" element="firebase-login"></app-route>
+      <app-route path="*" redirect="/"></app-route>
+    </app-router>
+  </blog-layout>
 </body>
 </html>
