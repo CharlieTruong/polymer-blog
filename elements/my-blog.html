@@ -1,5 +1,5 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="firebase-address.html">
+<link rel="import" href="firebase-ref.html">
 <link rel="import" href="firebase-login.html">
 <link rel="import" href="posts-list.html">
 
@@ -9,10 +9,9 @@
 >
 
   <template>
-    <a href="#/admin">Go To Admin</a>
+    <firebase-ref fireBaseRef="{{firebaseRef}}"></firebase-ref>
     <firebase-login
       provider="google"
-      firebaseAddress="{{address}}"
       firebaseRef="{{firebaseRef}}"
       router="{{router}}"
     >
@@ -24,11 +23,7 @@
 
 
   <script>
-    Polymer(Polymer.mixin({
-      ready: function() {
-        
-      }
-    }, server));
+    Polymer({});
   </script>
 
 </polymer-element>

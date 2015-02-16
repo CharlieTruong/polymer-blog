@@ -1,0 +1,17 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<script src="../bower_components/firebase/firebase.js"></script>
+<link rel="import" href="firebase-address.html">
+
+<polymer-element
+  name="firebase-ref"
+  attributes="firebaseRef"
+>
+  <script>
+    Polymer(Polymer.mixin({
+      created: function() {
+        this.firebaseRef = new Firebase(this.address);
+      }
+    }, server));
+  </script>
+
+</polymer-element>

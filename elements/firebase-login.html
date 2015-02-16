@@ -1,11 +1,13 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="firebase-ref.html">
 <script src="../bower_components/firebase/firebase.js"></script>
 
 <polymer-element name="firebase-login"
-  attributes="provider firebaseAddress firebaseRef router"
+  attributes="provider firebaseRef router"
 >
 
   <template>
+    <firebase-ref fireBaseRef="{{firebaseRef}}"></firebase-ref>
     <div 
       id="login-link"
       on-click="{{goToLogin}}"
@@ -25,9 +27,6 @@
         var self = this;
         this.firebaseRef.onAuth(function(authData) { 
         });
-      },
-      ready: function() {
-        this.firebaseRef = new Firebase(this.firebaseAddress);
       },
       goToLogin: function() {
         this.firebaseRef.authWithOAuthRedirect(this.provider, function(error) {
