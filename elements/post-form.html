@@ -1,0 +1,44 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-input/paper-autogrow-textarea.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="firebase-ref.html">
+
+<polymer-element
+  name="post-form"
+>
+  <template>
+    <firebase-ref firebaseRef="{{firebaseRef}}"></firebase-ref>
+    <div>Post Form</div>
+    <paper-autogrow-textarea
+      id="new-post-form-autogrow"
+      rows="10"
+      maxRows="15"
+      target="{{textAreaEl}}"
+    >
+      <textarea id="newPostForm" value="{{newPost}}"></textarea>
+    </paper-autogrow-textarea>
+    <paper-button raised on-click="{{addPost}}">Add Post</paper-button>
+    
+    <style>
+      #new-post-form-autogrow {
+        width: 100%;
+        border: 1px solid red;
+      }
+    </style>
+  </template>
+
+  <script>
+    Polymer({
+      ready: function() {
+        this.textAreaEl = this.$.newPostForm;
+      },
+      addPost: function() {
+        this.firebaseRef.child('posts')
+        .push({
+          title: this.newPost
+        })
+      }
+    });
+  </script>
+
+</polymer-element>

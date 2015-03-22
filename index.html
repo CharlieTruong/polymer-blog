@@ -4,15 +4,17 @@
   <title>Charlie's Blog</title>
   <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
   <link rel="import" href="bower_components/app-router/app-router.html">
+  <link rel="import" href="elements/post-form.html">
   <link rel="import" href="elements/my-blog.html">
   <link rel="import" href="elements/firebase-login.html">
   <link rel="import" href="elements/blog-layout.html">
 </head>
-<body>
-  <blog-layout>
+<body fullbleed vertical layout>
+  <blog-layout vertical layout flex>
     <app-router mode="hash">
       <app-route path="/" element="my-blog" bindRouter></app-route>
       <app-route path="/admin" element="firebase-login"></app-route>
+      <app-route path="/add-post" element="post-form"></app-route>
       <app-route path="*" redirect="/"></app-route>
     </app-router>
   </blog-layout>
