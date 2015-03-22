@@ -19,8 +19,11 @@
         var self = this;
         this.firebaseRef.child('posts')
         .orderByKey()
-        .on('value', function(data) {
-          self.posts = data.val().slice(1);
+        .on('value', function(posts) {
+          self.posts = [];
+          posts.forEach(function(post) {
+            self.posts.push(post.val());
+          });
         }); 
       }
     });
