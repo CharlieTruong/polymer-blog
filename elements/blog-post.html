@@ -1,0 +1,14 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/mark-down/mark-down.html">
+
+<polymer-element name="blog-post" attributes="post">
+  <template>
+    <h1>{{post.title}}</h1>
+    <div>
+      <mark-down>{{post.body}}</mark-down>
+    </div>
+  </template>
+  <script>
+    Polymer({});
+  </script>
+</polymer-element>

@@ -1,14 +1,12 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/mark-down/mark-down.html">
+<link rel="import" href="blog-post.html">
 
 <polymer-element name="posts-list"
   attributes="firebaseRef"
 >
   <template>
     <template repeat="{{post in posts}}">
-      <mark-down>
-        <div>{{post.title}}</div>
-      </mark-down>
+      <blog-post post="{{post}}"></blog-post>
     </template>
   </template>
 
