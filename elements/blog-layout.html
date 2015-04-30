@@ -1,18 +1,22 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/core-scaffold/core-scaffold.html">
+<link rel="import" href="../bower_components/core-toolbar/core-toolbar.html">
+<link rel="import" href="../bower_components/core-menu/core-menu.html">
+<link rel="import" href="../bower_components/core-item/core-item.html">
+<link rel="import" href="../bower_components/core-header-panel/core-header-panel.html">
 
 <polymer-element name="blog-layout">
 
   <template>
-    <core-scaffold>
+    <core-scaffold id="layout">
       <core-header-panel navigation flex mode="seamed">
-        <core-toolbar>Application</core-toolbar>
-        <core-menu theme="core-light-theme">
-          <core-item icon="settings" label="item1"></core-item>
-          <core-item icon="settings" label="item2"></core-item>
+        <core-toolbar>Console Blog</core-toolbar>
+        <core-menu theme="core-light-theme" selected="0" selectedItem="{{item}}" on-core-select="{{closeDrawer}}">
+          <core-item label="Posts"></core-item>
+          <core-item label="About Me"></core-item>
         </core-menu>
       </core-header-panel>
-      <div tool>Title</div>
+      <div tool>{{item.label}}</div>
       <div>Main content goes here...</div>
     </core-scaffold>
     <style>
@@ -28,6 +32,9 @@
   <script>
     Polymer({
       ready: function() {
+      },
+      closeDrawer: function() {
+        this.$.layout.closeDrawer();
       }
     });
   </script>
