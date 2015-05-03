@@ -8,11 +8,13 @@
   <link rel="import" href="elements/my-blog.html">
   <link rel="import" href="elements/firebase-login.html">
   <link rel="import" href="elements/blog-layout.html">
+  <link rel="import" href="elements/about-me.html">
 </head>
 <body fullbleed vertical layout>
   <blog-layout vertical layout flex>
     <app-router mode="hash">
-      <app-route path="/" element="my-blog" bindRouter></app-route>
+      <app-route path="/" element="my-blog"></app-route>
+      <app-route path="/about-me" element="about-me"></app-route>
       <app-route path="/admin" element="firebase-login"></app-route>
       <app-route path="/add-post" element="post-form"></app-route>
       <app-route path="*" redirect="/"></app-route>

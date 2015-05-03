@@ -12,12 +12,16 @@
       <core-header-panel navigation flex mode="seamed">
         <core-toolbar>Console Blog</core-toolbar>
         <core-menu theme="core-light-theme" selected="0" selectedItem="{{item}}" on-core-select="{{closeDrawer}}">
-          <core-item label="Posts"></core-item>
-          <core-item label="About Me"></core-item>
+          <core-item label="Posts">
+            <a href="#/"></a>
+          </core-item>
+          <core-item label="About Me">
+            <a href="#/about-me"></a>
+          </core-item>
         </core-menu>
       </core-header-panel>
       <div tool>{{item.label}}</div>
-      <div>Main content goes here...</div>
+      <content></content>
     </core-scaffold>
     <style>
       :host {
