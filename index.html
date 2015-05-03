@@ -3,6 +3,7 @@
 <head>
   <title>Charlie's Blog</title>
   <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+  <link rel="import" href="bower_components/core-animated-pages/core-animated-pages.html">
   <link rel="import" href="bower_components/app-router/app-router.html">
   <link rel="import" href="elements/post-form.html">
   <link rel="import" href="elements/my-blog.html">
@@ -12,7 +13,7 @@
 </head>
 <body fullbleed vertical layout>
   <blog-layout vertical layout flex>
-    <app-router mode="hash">
+    <app-router mode="hash" core-animated-pages transitions="cross-fade">
       <app-route path="/" element="my-blog"></app-route>
       <app-route path="/about-me" element="about-me"></app-route>
       <app-route path="/admin" element="firebase-login"></app-route>

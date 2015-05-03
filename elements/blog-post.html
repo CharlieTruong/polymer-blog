@@ -3,9 +3,11 @@
 
 <polymer-element name="blog-post" attributes="post">
   <template>
-    <h1>{{post.title}}</h1>
-    <div>
-      <mark-down>{{post.body}}</mark-down>
+    <div cross-fade>
+      <h1>{{post.title}}</h1>
+      <div>
+        <mark-down>{{post.body}}</mark-down>
+      </div>
     </div>
   </template>
   <script>
