@@ -4,6 +4,7 @@
 <link rel="import" href="../bower_components/core-menu/core-menu.html">
 <link rel="import" href="../bower_components/core-item/core-item.html">
 <link rel="import" href="../bower_components/core-header-panel/core-header-panel.html">
+<link rel="import" href="../bower_components/core-icons/social-icons.html">
 
 <polymer-element name="blog-layout">
 
@@ -12,10 +13,10 @@
       <core-header-panel navigation flex mode="seamed">
         <core-toolbar>Console Blog</core-toolbar>
         <core-menu theme="core-light-theme" selected="0" selectedItem="{{item}}" on-core-select="{{closeDrawer}}">
-          <core-item label="Posts">
+          <core-item icon="social:pages" label="Posts">
             <a href="#/"></a>
           </core-item>
-          <core-item label="About Me">
+          <core-item icon="social:person" label="About Me">
             <a href="#/about-me"></a>
           </core-item>
         </core-menu>
