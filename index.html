@@ -18,7 +18,7 @@
       <app-route path="/" element="my-blog"></app-route>
       <app-route path="/about-me" element="about-me"></app-route>
       <app-route path="/admin" element="firebase-login"></app-route>
-      <app-route path="/add-post" element="post-form"></app-route>
+      <app-route path="/\/add-post.*/" regex element="post-form"></app-route>
       <app-route path="*" redirect="/"></app-route>
     </app-router>
   </blog-layout>
