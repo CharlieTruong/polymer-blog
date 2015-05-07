@@ -1,4 +1,5 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="firebase-ref.html">
 
 <polymer-element name="firebase-login"
@@ -7,14 +8,22 @@
 
   <template>
     <firebase-ref fireBaseRef="{{firebaseRef}}"></firebase-ref>
-    <div 
-      id="login-link"
-      on-click="{{goToLogin}}"
-    >Login with Google</div>
-
+    <template if="{{!authData}}">
+      <paper-button id="login-link" on-click="{{goToLogin}}" raised>
+        Login with Google
+      </paper-button>
+    </template>
+    <template if="{{!!authData}}">
+      <paper-button disabled>Logged In</paper-button>
+    </template>
     <style>
       #login-link {
         cursor: pointer;
+        margin: 0;
+      }
+
+      paper-button {
+        margin: 0;
       }
     </style>
   </template>
@@ -25,6 +34,7 @@
       attached: function() {
         var self = this;
         this.firebaseRef.onAuth(function(authData) {
+          self.authData = authData;
         });
       },
       goToLogin: function() {
