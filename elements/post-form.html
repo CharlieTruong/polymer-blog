@@ -1,5 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/paper-input/paper-autogrow-textarea.html">
+<link rel="import" href="../bower_components/paper-input/paper-input-decorator.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="firebase-ref.html">
 <link rel="import" href="firebase-login.html">
@@ -10,21 +12,43 @@
   <template>
     <firebase-login provider="google" firebaseRef="{{firebaseRef}}"></firebase-login>
     <firebase-ref firebaseRef="{{firebaseRef}}"></firebase-ref>
-    <div>Post Form</div>
-    <paper-autogrow-textarea
-      id="new-post-form-autogrow"
-      rows="10"
-      maxRows="15"
-      target="{{textAreaEl}}"
+    
+    <paper-input
+      id="post_form_title"
+      class="post_form"
+      floatingLabel
+      label="Post Title"
+      value="{{post.title}}"
+    ></paper-input>
+
+    <paper-input-decorator
+      id="post_form_body"
+      class="post_form"
+      floatingLabel
+      label="Post Body"
     >
-      <textarea id="newPostForm" value="{{newPost}}"></textarea>
-    </paper-autogrow-textarea>
-    <paper-button raised on-click="{{addPost}}">Add Post</paper-button>
+      <paper-autogrow-textarea
+        rows="10"
+        maxRows="15"
+        target="{{textAreaEl}}"
+      >
+        <textarea id="post_form_body_textarea" value="{{post.body}}"></textarea>
+      </paper-autogrow-textarea>
+    </paper-input-decorator>
+
+    <paper-button id="add_post_button" raised on-click="{{addPost}}">Add Post</paper-button>
     
     <style>
-      #new-post-form-autogrow {
-        width: 100%;
-        border: 1px solid red;
+      .post_form {
+        display: block;
+      }
+
+      .post_form, #add_post_button {
+        margin-top: 0.5em;
+      }
+
+      #add_post_button {
+        margin-left: 0;
       }
     </style>
   </template>
@@ -32,13 +56,11 @@
   <script>
     Polymer({
       ready: function() {
-        this.textAreaEl = this.$.newPostForm;
+        this.textAreaEl = this.$.post_form_body_testarea;
+        this.post = {};
       },
       addPost: function() {
-        this.firebaseRef.child('posts')
-        .push({
-          title: this.newPost
-        })
+        this.firebaseRef.child('posts').push(this.post);
       }
     });
   </script>
