@@ -60,8 +60,9 @@
         this.post = {};
       },
       addPost: function() {
-        this.post.createdAtDate = new Date().valueOf();
-        this.firebaseRef.child('posts').push(this.post);
+        this.post.createdAtDate = Date.now();
+        var newPostRef = this.firebaseRef.child('posts').push();
+        newPostRef.setWithPriority(this.post, -this.post.createdAtDate);
       }
     });
   </script>
