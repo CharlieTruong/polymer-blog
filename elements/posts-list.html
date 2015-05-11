@@ -16,7 +16,7 @@
       ready: function() {
         var self = this;
         this.firebaseRef.child('posts')
-        .orderByKey()
+        .orderByPriority()
         .on('value', function(posts) {
           self.posts = [];
           posts.forEach(function(post) {
