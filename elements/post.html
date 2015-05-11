@@ -1,0 +1,37 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/mark-down/mark-down.html">
+<link rel="import" href="firebase-ref.html">
+
+<polymer-element name="post-card" attributes="postId">
+  <template>
+    <firebase-ref firebaseRef="{{firebaseRef}}"></firebase-ref>
+    <div id="post" cross-fade>
+      <h2>{{post.title}}</h2>
+      <h5>{{post.date}}</h5>
+      <hr>
+      <mark-down text="{{post.body}}"></mark-down>
+    </div>
+    <style>
+      @media (min-width: 600px) {
+        #post {
+          width: 80%;
+        }
+      }
+    </style>
+  </template>
+  <script>
+    Polymer({
+      domReady: function() {
+        var self = this;
+        
+        this.firebaseRef
+          .child('posts')
+          .child(this.postId)
+          .on('value', function(post) {
+            self.post = post.val();
+            self.post.date = new Date(self.post.createdAtDate).toLocaleDateString();
+          });
+      }
+    });
+  </script>
+</polymer-element>
