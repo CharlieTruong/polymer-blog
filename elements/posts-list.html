@@ -1,12 +1,12 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="blog-post.html">
+<link rel="import" href="post-preview.html">
 
 <polymer-element name="posts-list"
   attributes="firebaseRef"
 >
   <template>
     <template repeat="{{post in posts}}">
-      <blog-post post="{{post}}"></blog-post>
+      <post-preview post="{{post}}"></post-preview>
     </template>
   </template>
 
@@ -19,8 +19,11 @@
         .orderByPriority()
         .on('value', function(posts) {
           self.posts = [];
-          posts.forEach(function(post) {
-            self.posts.push(post.val());
+
+          posts.forEach(function(postRef) {
+            var post = postRef.val();
+            post.id = postRef.key();
+            self.posts.push(post);
           });
         }); 
       }

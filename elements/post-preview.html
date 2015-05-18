@@ -1,0 +1,39 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-shadow/paper-shadow.html">
+
+<polymer-element name="post-preview" attributes="post">
+  <template>
+    <paper-shadow z="1" cross-fade>
+      <a href="#/posts/{{post.id}}">
+        <div id="post-preview">
+          <h2>{{post.title}}</h2>
+          <div id="body">{{post.body}}</div>
+        </div>
+      </a>
+    </paper-shadow>
+
+    <style>
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      #body {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      @media (min-width: 600px) {
+        paper-shadow {
+          width: 80%;
+          display: inline-block;
+        }
+      }
+    </style>
+  </template>
+  <script>
+    Polymer({});
+  </script>
+</polymer-element>
